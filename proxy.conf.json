@@ -1,7 +1,7 @@
   
 {
     "/server": {
-      "target": "https://prf-node-hellow123.herokuapp.com/",
+      "target": "https://publicprogram.herokuapp.com/",
       "secure": true,
       "changeOrigin": true,
       "pathRewrite": {
