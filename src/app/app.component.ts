@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { ConnectionService } from './utils/connection.service';
 
 @Component({
   selector: 'app-root',
@@ -7,8 +6,5 @@ import { ConnectionService } from './utils/connection.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  constructor(private connectionService : ConnectionService){
 
-  }
-  title = 'Public';
 }

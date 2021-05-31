@@ -1,0 +1,75 @@
+<h2>Vásárlás</h2>
+<button *ngIf="isAdmin" class="btn btn-lg btn-outline-primary" (click)="openPanel(addItemContent)">Termék hozzáadás</button>
+<div class="container">
+    <div class="row">
+
+      <div class="col-lg-4 col-md-6 mb-4" *ngFor="let item of items">
+        <div class="card h-100">
+            <img class="card-img-top" src={{item.imageurl}} alt="">
+            <div class="card-body">
+              <h2 class="card-title">
+                <a href="#">{{item.name}}</a>
+              </h2>
+              <h3>Ár : {{ item.price }} ft</h3>
+              <button *ngIf="isAdmin" class="btn btn-lg btn-outline-primary" (click)="purchase(item)">Vásárlás</button>
+              <button *ngIf="isAdmin" class="btn btn-lg btn-outline-primary" (click)="modifyItemPanel(item,modifyItemContent)">Módosítás</button>
+              <button *ngIf="isAdmin" class="btn btn-lg btn-outline-primary" (click)="removeItem(item.docname)">Eltávolítás</button>
+
+            </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <ng-template #addItemContent let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title">Termék hozzáadása</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+     <div class="form-group">
+         <label for="itemname">Termék neve</label>
+         <input id="itemNameInput" type="text" class="form-control" aria-describedby="usernameHelp" placeholder="Név">
+       </div>
+       <div class="form-group">
+         <label for="price">Termék ára</label>
+         <input id="priceInput" type="text" class="form-control" placeholder="Ár">
+       </div>
+       <div class="form-group">
+        <label for="imageurl">Kép a termékről</label>
+        <input id="imageUrlInput" type="text" class="form-control" placeholder="(url)">
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-primary" (click)="modal.close('Close click')">Bezár</button>
+      <button type="button" class="btn btn-danger" (click)="uploadItem()">Feltöltés</button>
+    </div>
+  </ng-template>
+  <ng-template #modifyItemContent let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title">Termék módosítása</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+     <div class="form-group">
+         <label for="itemname2">Termék neve</label>
+         <input id="itemName2Input" type="text" class="form-control" aria-describedby="usernameHelp" placeholder={{selectedItem.name}}>
+       </div>
+       <div class="form-group">
+         <label for="price2">Termék ára</label>
+         <input id="price2Input" type="text" class="form-control" placeholder={{selectedItem.price}}>
+       </div>
+       <div class="form-group">
+        <label for="imageurl2">Kép a termékről</label>
+        <input id="imageUrl2Input" type="text" class="form-control" placeholder={{selectedItem.imageurl}}>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-primary" (click)="modal.close('Close click')">Bezár</button>
+      <button type="button" class="btn btn-danger" (click)="modifyItem()">Módosítás</button>
+    </div>
+  </ng-template>

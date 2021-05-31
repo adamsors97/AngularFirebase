@@ -1,1 +1,12 @@
-<p>login-component works!</p>
+<div class="content" role="main">
+    <h2>Login</h2>
+    <div>
+        <label>Email</label>
+        <input type="email" id="email" class="form-control" [(ngModel)]="email">
+    </div>
+    <div>
+        <label>Password</label>
+        <input type="password" id="password" class="form-control" [(ngModel)]="password">
+    </div>
+    <button (click)="login()" class="btn btn-primary">Login</button>
+</div>
